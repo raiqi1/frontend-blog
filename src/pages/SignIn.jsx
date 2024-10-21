@@ -30,6 +30,7 @@ export default function SignIn() {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(formData),
+          credentials: "include",
         }
       );
       const data = await res.json();
@@ -38,6 +39,7 @@ export default function SignIn() {
       }
 
       if (res.ok) {
+        console.log("cookie", document.cookie);
         dispatch(signInSuccess(data));
         navigate("/");
       }
