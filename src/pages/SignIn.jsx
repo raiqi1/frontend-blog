@@ -39,6 +39,7 @@ export default function SignIn() {
       }
 
       if (res.ok) {
+        console.log("cookie", document.cookie);
         dispatch(signInSuccess(data));
         console.log("cookie", document.cookie);
         navigate("/");
