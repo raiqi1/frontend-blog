@@ -30,6 +30,7 @@ export default function SignIn() {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(formData),
+          credentials: "include",
         }
       );
       const data = await res.json();
@@ -39,6 +40,7 @@ export default function SignIn() {
 
       if (res.ok) {
         dispatch(signInSuccess(data));
+        console.log("cookie", document.cookie);
         navigate("/");
       }
     } catch (error) {
@@ -52,7 +54,7 @@ export default function SignIn() {
         <div className="flex-1">
           <Link to="/" className="font-bold dark:text-white text-4xl">
             <span className="px-2 py-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg text-white">
-              Sahand's
+              Rayiqi&apos;s
             </span>
             Blog
           </Link>

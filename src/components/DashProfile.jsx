@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { Alert, Button, Modal, ModalBody, TextInput } from "flowbite-react";
 import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
@@ -82,6 +83,7 @@ export default function DashProfile() {
         setImageFile(null);
         setImageFileUrl(null);
         setImageFileUploading(false);
+        confirm('error', error.message);
       },
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
@@ -119,6 +121,7 @@ export default function DashProfile() {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(formData),
+          credentials: 'include'
         }
       );
       const data = await res.json();
@@ -173,6 +176,9 @@ export default function DashProfile() {
       console.log(error.message);
     }
   };
+
+  console.log(currentUser);
+  console.log(formData);
   return (
     <div className="max-w-lg mx-auto p-3 w-full">
       <h1 className="my-7 text-center font-semibold text-3xl">Profile</h1>
@@ -300,7 +306,7 @@ export default function DashProfile() {
             </h3>
             <div className="flex justify-center gap-4">
               <Button color="failure" onClick={handleDeleteUser}>
-                Yes, I'm sure
+                Yes, I&apos;m sure
               </Button>
               <Button color="gray" onClick={() => setShowModal(false)}>
                 No, cancel
